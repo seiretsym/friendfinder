@@ -3,10 +3,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 
-// database
-var friends = require("./app/data/friends.js");
-console.log(friends)
-
 // set up express app
 var app = express();
 var PORT = 3377; // D E R P :D
@@ -19,7 +15,11 @@ app.use(bodyParser.json())
 // route the pages
 require("./app/routing/htmlRoutes.js")(app);
 
+// route the api returns
+require("./app/routing/apiRoutes.js")(app);
+
 // open server!
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
+
