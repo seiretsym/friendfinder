@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 // route the pages
-require("./app/routing/htmlRoutes.js")(app);
+require(path.join(__dirname, "/app/routing/htmlRoutes.js"))(app);
 
 // route the api returns
-require("./app/routing/apiRoutes.js")(app);
+require(path.join(__dirname, "/app/routing/apiRoutes.js"))(app);
 
 // open server!
 app.listen(PORT, function() {
