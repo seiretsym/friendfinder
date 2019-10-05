@@ -64,5 +64,6 @@ module.exports = function (app) {
                 scores: [1, 5, 4, 5, 2, 5, 3, 5, 1, 5]
             }
         ]
+        res.send(true);
     })
 }

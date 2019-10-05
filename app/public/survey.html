@@ -202,7 +202,6 @@
         }
         // post it!
         $.post("api/friends", foodie, function(friend) {
-          console.log(friend)
           // parse friend data and stuffs
           $("#buddyName").html(friend.name);
           $("#buddyPhoto").attr("src", friend.photo);
@@ -222,7 +221,9 @@
           url: "api/friends",
           method: "PUT"
         }).then(function(data) {
-          console.log("BFF Data Resetted!");
+          if (data) {
+            console.log("BFF Data Resetted!");
+          }
         })
       })
     </script>
