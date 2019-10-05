@@ -15,7 +15,6 @@ module.exports = function (app) {
             photo: req.body.photo,
             scores: req.body.scores
         }
-
         // do some magic to find the best food friend
         var score = req.body.scores;
 
