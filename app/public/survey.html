@@ -31,7 +31,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="photo">Link to Photo:</label>
-              <input type="text" class="form-control" id="text" placeholder="...link to your photo" required>
+              <input type="text" class="form-control" id="photo" placeholder="...link to your photo" required>
             </div>
           </div>
         </div>
@@ -146,7 +146,7 @@
           <hr class="bg-secondary">
           <!-- submit button -->
           <div class="form-group mb-1 text-center">
-            <input class="btn btn-dark btn-outline-warning" type="submit" value="Find Food Buddy!">
+            <input class="btn btn-dark btn-outline-warning submit" type="submit" value="Find Food Buddy!">
           </div>
         </div>
       </form>
@@ -163,5 +163,29 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+      // event listener for submit button
+      $(".submit").on("click", function() {
+        // create an array of the stores
+        var score = []
+        // push values into score via for loop
+        for (var i = 1; i <= 10; i++) {
+          // because we know how many questions and the ids are q1-q10 we can do this...
+          score.push($("#q" + i).val())
+        }
+        // create object to store information
+        var foodie = {
+          "name": $("#name").val().trim(),
+          "photo": $("#photo").val().trim(),
+          "scores": score
+        }
+        // post it!
+        $.post("api/friends", foodie, function(friend) {
+          // parse friend data and stuffs
+          
+        })
+      })
+
+    </script>
   </body>
 </html>
