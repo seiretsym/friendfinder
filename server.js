@@ -17,10 +17,10 @@ app.use(bodyParser.text())
 // route the pages
 require(path.join(__dirname, "/app/routing/htmlRoutes.js"))(app);
 
-// route the api returns
+// route the api returnsy
 require(path.join(__dirname, "/app/routing/apiRoutes.js"))(app);
 
 // open server!
-app.listen(PORT, function() {
+app.listen(process.env.PORT || 3377, function() {
     console.log("App listening on PORT " + PORT);
 });
