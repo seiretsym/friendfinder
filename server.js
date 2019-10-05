@@ -8,9 +8,11 @@ var app = express();
 var PORT = 3377; // D E R P :D
 
 // ...with bodyParser
-app.use(bodyParser.urlencoded({ extended: false }));
-// ...into json for... EVERYTHING!
+app.use(bodyParser.urlencoded({ extended: true }));
+// ...for json
 app.use(bodyParser.json())
+// ...and text
+app.use(bodyParser.text())
 
 // route the pages
 require(path.join(__dirname, "/app/routing/htmlRoutes.js"))(app);
