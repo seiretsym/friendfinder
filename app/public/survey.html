@@ -152,7 +152,9 @@
       </form>
       <!-- api links -->
       <p class="text-center m-0">
-        <a href="/api/friends/" class="text-warning">Food Buddy API</a> | <a href="https://github.com/seiretsym/friendfinder/" class="text-warning" target="_new">Github Repo</a>
+        <a href="/api/friends/" class="text-warning">Food Buddy API</a> | 
+        <a href="https://github.com/seiretsym/friendfinder/" class="text-warning" target="_new">Github Repo</a> | 
+        <a href="#" id="reset" class="text-warning">Reset Friends</a>
       </p>
       <!-- derpclaimer -->
       <p class="text-dark text-center m-0">Disclaimer: We aren't accountable for your bad experiences. Use at your own risk.</p>
@@ -163,13 +165,14 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="buddyName"></h5>
+            <h5 class="modal-title">Best Food Friend</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-              <img src="" id="buddyPhoto" class="img-fluid rounded">
+            <h3 id="buddyName"></h3>
+            <img src="" id="buddyPhoto" class="img-fluid rounded">
           </div>
         </div>
       </div>
@@ -199,15 +202,29 @@
         }
         // post it!
         $.post("api/friends", foodie, function(friend) {
+          console.log(friend)
           // parse friend data and stuffs
           $("#buddyName").html(friend.name);
           $("#buddyPhoto").attr("src", friend.photo);
 
           // show modal because user is popular and has a match
-          $("#buddyModal").modal("toggle");
+          $("#friendModal").modal("toggle");
         })
       })
 
+      // event listener for reset friends
+      $("#reset").on("click", function() {
+        // ignore default event
+        event.preventDefault();
+
+        // send a put message to api/friends
+        $.ajax({
+          url: "api/friends",
+          method: "PUT"
+        }).then(function(data) {
+          console.log("BFF Data Resetted!");
+        })
+      })
     </script>
   </body>
 </html>
