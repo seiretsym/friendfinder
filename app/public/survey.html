@@ -191,12 +191,11 @@
           // because we know how many questions and the ids are q1-q10 we can do this...
           score.push($("#q" + i).val())
         }
-        console.log(score);
         // create object to store information
         var foodie = {
-          "name": $("#name").val().trim(),
-          "photo": $("#photo").val().trim(),
-          "scores": score
+          name: $("#name").val().trim(),
+          photo: $("#photo").val().trim(),
+          scores: score
         }
         // post it!
         $.post("api/friends", foodie, function(friend) {
