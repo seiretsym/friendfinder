@@ -182,13 +182,16 @@
     <script>
       // event listener for submit button
       $(".submit").on("click", function() {
+        // ignore default event
+        event.preventDefault();
         // create an array of the stores
-        var score = []
+        var score = [];
         // push values into score via for loop
         for (var i = 1; i <= 10; i++) {
           // because we know how many questions and the ids are q1-q10 we can do this...
           score.push($("#q" + i).val())
         }
+        console.log(score);
         // create object to store information
         var foodie = {
           "name": $("#name").val().trim(),
