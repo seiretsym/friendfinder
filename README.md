@@ -29,7 +29,7 @@ A simple display of using Express to set up a server for get/put/post. After com
 - Learned to read/write data from/into another .js file
 
 ## Screenshots
-![Best Food Friend](readme.PNG)
+![Best Food Friend](readme.png)
 ## Code Snippets
 Routing paths files from a different file from server.js
 
